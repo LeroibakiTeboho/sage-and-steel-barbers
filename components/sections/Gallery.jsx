@@ -93,7 +93,7 @@ function GalleryLightbox({ images, index, onClose, onPrev, onNext }) {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[110] flex items-center justify-center p-3 sm:p-6"
+      className="fixed inset-0 z-110 flex items-center justify-center p-3 sm:p-6"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -251,7 +251,7 @@ export default function Gallery() {
               {/* Hover overlay */}
               <span
                 aria-hidden="true"
-                className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
+                className="pointer-events-none absolute inset-0 bg-linear-to-t from-ink/80 via-ink/15 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-focus-visible:opacity-100"
               />
 
               <span

@@ -196,7 +196,7 @@ export default function ServicesPage() {
                       <td className="px-5 py-4 text-right">
                         <Link
                           href={`/booking?service=${service.id}`}
-                          className="inline-flex items-center gap-1 text-[0.72rem] font-semibold uppercase tracking-[0.1em] text-ink transition-colors hover:text-teal-700"
+                          className="inline-flex items-center gap-1 text-[0.72rem] font-semibold uppercase tracking-widest text-ink transition-colors hover:text-teal-700"
                         >
                           Book
                           <FiArrowRight
