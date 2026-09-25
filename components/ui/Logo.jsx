@@ -1,68 +1,49 @@
+import Image from "next/image";
 import { cx } from "@/lib/utils";
 
-export function LogoMark({ className }) {
+/**
+ * Brand logo.
+ *
+ * The brand mark is a single PNG (`/images/logo/logo.png`).
+ *
+ * Sizing strategy:
+ *   - The intrinsic `width` / `height` props below should match the
+ *     PNG's real pixel dimensions. Update them if your file differs.
+ *   - Height is always `h-auto` so the image scales proportionally.
+ *   - Width is controlled by the caller via `markClassName`.
+ *
+ * `LogoMark` is exported separately so callers (e.g. PromoModal) that
+ * only need the mark don't pull in the optional wordmark.
+ */
+
+export function LogoMark({ className, priority = false }) {
   return (
-    <svg
-      viewBox="0 0 48 48"
-      className={cx("shrink-0", className)}
-      fill="none"
+    <Image
+      src="/images/logo/logo.png"
+      alt=""
+      width={400}
+      height={120}
+      priority={priority}
+      sizes="(max-width: 640px) 140px, 170px"
+      className={cx("h-auto object-contain", className)}
       aria-hidden="true"
-    >
-      {/* Hexagon shield */}
-      <path
-        d="M24 2.5 43.5 13.75v22.5L24 47.5 4.5 36.25v-22.5z"
-        stroke="currentColor"
-        strokeWidth="2.4"
-        strokeLinejoin="round"
-      />
-      {/* Razor blade */}
-      <path
-        d="M14.5 33.5 29.5 18.5"
-        stroke="currentColor"
-        strokeWidth="3.4"
-        strokeLinecap="round"
-      />
-      {/* Razor pivot */}
-      <circle
-        cx="32.5"
-        cy="15.5"
-        r="3.6"
-        stroke="currentColor"
-        strokeWidth="2.4"
-      />
-      <circle cx="32.5" cy="15.5" r="1" fill="currentColor" />
-      {/* Handle */}
-      <path
-        d="M35.5 18.5 40 26"
-        stroke="currentColor"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        opacity="0.7"
-      />
-      {/* Edge highlight */}
-      <path
-        d="M18.5 35.5h10"
-        stroke="currentColor"
-        strokeWidth="2.4"
-        strokeLinecap="round"
-        opacity="0.5"
-      />
-    </svg>
+    />
   );
 }
 
 export default function Logo({
   className,
-  markClassName = "h-9 w-9",
-  showWordmark = true,
+  markClassName = "w-[140px] sm:w-[170px]",
+  showWordmark = false,
   tone = "light",
+  priority = false,
 }) {
   const wordColor = tone === "light" ? "text-cream" : "text-ink";
-  const markColor = tone === "light" ? "text-mint" : "text-teal-700";
 
   return (
     <span className={cx("inline-flex items-center gap-3", className)}>
-      <LogoMark className={cx(markClassName, markColor)} />
+      <LogoMark className={markClassName} priority={priority} />
+
       {showWordmark && (
         <span className="flex flex-col leading-none">
           <span

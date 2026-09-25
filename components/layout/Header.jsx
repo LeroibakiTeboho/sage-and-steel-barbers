@@ -64,14 +64,19 @@ export default function Header() {
           )}
         >
           {/* Logo — left-aligned on every breakpoint.
-              On mobile/tablet, navigation and booking live in the
-              bottom app-style bar, so this is the only header item. */}
+              Mobile/tablet navigation lives in the bottom app-style
+              bar, so this is the only header item below `lg`.
+              `priority` prevents the logo from popping in after the
+              rest of the header on first paint. */}
           <Link
             href="/"
             aria-label={`${business.fullName} — home`}
             className="rounded-lg"
           >
-            <Logo markClassName="h-8 w-8 sm:h-9 sm:w-9" />
+            <Logo
+              markClassName="w-[130px] sm:w-[150px] lg:w-[170px]"
+              priority
+            />
           </Link>
 
           {/* ---------- Desktop (lg+) ---------- */}

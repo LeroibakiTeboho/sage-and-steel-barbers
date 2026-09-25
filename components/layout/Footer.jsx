@@ -47,7 +47,12 @@ export default function Footer() {
         <div className="grid gap-12 lg:grid-cols-12 lg:gap-10">
           {/* Brand */}
           <div className="lg:col-span-4">
-            <Logo markClassName="h-10 w-10" />
+            {/* Width-driven sizing — height auto-scales from the PNG's
+                natural aspect ratio, so a wide banner logo is never
+                squashed. Slightly larger than the header logo since
+                the footer has more breathing room. */}
+            <Logo markClassName="w-[150px] sm:w-[170px]" />
+
             <p className="mt-5 max-w-xs text-sm leading-relaxed text-cream/65">
               {business.shortDescription}
             </p>
